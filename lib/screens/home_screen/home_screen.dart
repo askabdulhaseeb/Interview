@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:interview/screens/profile_screen/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = 'HomeScreen';
@@ -46,11 +47,20 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: Text('Home'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(ProfileScreen.routeName);
+            },
+            icon: const Icon(Icons.person),
+          )
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Center(
               child: Text(

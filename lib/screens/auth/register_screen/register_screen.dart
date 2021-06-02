@@ -25,30 +25,33 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       body: Form(
         key: _globalKey,
-        child: Column(
-          children: [
-            const SizedBox(height: 200),
-            ValideNameTextFormField(name: _name),
-            ValideEmailTextFormField(email: _email),
-            ValidePasswordTextFormField(password: _password),
-            ElevatedButton(
-              onPressed: () {
-                if (_globalKey.currentState!.validate()) {
-                  AppUser _user = AppUser(
-                    name: _name.text.trim(),
-                    email: _email.text.trim(),
-                    password: _password.text.trim(),
-                  );
-                  Provider.of<AppUserProvider>(context, listen: false)
-                      .appNewUser(_user);
-                  Navigator.of(context).pop();
-                }
-              },
-              child: Text('Register'),
-            ),
-            const SizedBox(height: 12),
-            LoginLine(),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const SizedBox(height: 200),
+              ValideNameTextFormField(name: _name),
+              ValideEmailTextFormField(email: _email),
+              ValidePasswordTextFormField(password: _password),
+              ElevatedButton(
+                onPressed: () {
+                  if (_globalKey.currentState!.validate()) {
+                    AppUser _user = AppUser(
+                      name: _name.text.trim(),
+                      email: _email.text.trim(),
+                      password: _password.text.trim(),
+                    );
+                    Provider.of<AppUserProvider>(context, listen: false)
+                        .appNewUser(_user);
+                    Navigator.of(context).pop();
+                  }
+                },
+                child: Text('Register'),
+              ),
+              const SizedBox(height: 12),
+              LoginLine(),
+            ],
+          ),
         ),
       ),
     );
